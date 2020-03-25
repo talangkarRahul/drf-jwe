@@ -17,6 +17,14 @@ JWE_DEFAULTS = {
     "JWE_ENCODER": "A256CBC-HS512"
 }
 
+REST_FRAMEWORK = {
+  # other settings
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'drf_jwe.authentication.JSONWebTokenAuthentication',
+    ),
+}
+
+
 AUTH_USER_MODEL = 'user_mgmt.UserMaster' # your user model
 ```
 
