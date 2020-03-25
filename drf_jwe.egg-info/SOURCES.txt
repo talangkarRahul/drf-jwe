@@ -1,0 +1,10 @@
+setup.cfg
+setup.py
+drf_jwe/__init__.py
+drf_jwe/authentication.py
+drf_jwe/constraints.py
+drf_jwe/token.py
+drf_jwe.egg-info/PKG-INFO
+drf_jwe.egg-info/SOURCES.txt
+drf_jwe.egg-info/dependency_links.txt
+drf_jwe.egg-info/top_level.txt
