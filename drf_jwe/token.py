@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 
 def jwt_encode_handler(payload):
-    key = settings.jwt_secret
+    key = settings.JWT_SECRET
     return jwt.encode(
         payload,
         key,
@@ -27,7 +27,7 @@ def jwt_decode_handler(token, options=None):
         options = {
          'verify_exp': settings.JWT_DEFAULTS['JWT_VERIFY_EXPIRATION'],
         }
-    secret_key = settings.jwt_secret
+    secret_key = settings.JWT_SECRET
     return jwt.decode(
         token,
         secret_key,
@@ -51,7 +51,7 @@ def generate_jwt_payload(user):
 
 def jwe_encode_handler(payload):
     key = jwk.JWK(**{
-        'k': settings.jwe_secret,
+        'k': settings.JWE_SECRET,
         'kty': settings.JWE_DEFAULTS['JWE_KEY_TYPE'],
     })
     jwe_token = jwe.JWE(payload.encode('utf-8'), json_encode({
@@ -66,7 +66,7 @@ def jwe_encode_handler(payload):
 def jwe_decode_handler(token):
 
     key = jwk.JWK(**{
-        'k': settings.jwe_secret,
+        'k': settings.JWE_SECRET,
         'kty': settings.JWE_DEFAULTS['JWE_KEY_TYPE'],
     })
     jwe_token = jwe.JWE()
