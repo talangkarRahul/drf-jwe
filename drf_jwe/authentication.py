@@ -43,7 +43,7 @@ class JSONWebTokenAuthentication(BaseAuthentication):
                 jwt_token = jwe_decode_handler(self.jwe_token)
                 payload = jwt_decode_handler(jwt_token, {'verify_exp': False, })
                 auth_user = self.verify_user(payload)
-                jwt_payload = generate_jwt_payload(request, auth_user)
+                jwt_payload = generate_jwt_payload(auth_user)
                 ref_jwt_token = jwt_encode_handler(jwt_payload)
                 ref_jwe_token = jwe_encode_handler(ref_jwt_token)
                 return auth_user, ref_jwe_token
